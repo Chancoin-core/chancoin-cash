@@ -32,7 +32,7 @@ var (
 var (
 	// chancoin mainnet config
 	chancoinMainnetChainConfig = &ChainConfig{
-		ChainId:        big.NewInt(88),
+		ChainId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(1),
 		EIP150Block:    big.NewInt(2),
 		EIP150Hash:     common.HexToHash("0x0000000000000000000000000000000000000000000000000000000000000000"),
@@ -51,7 +51,7 @@ var (
 
 	// TestnetChainConfig contains the chain parameters to run a node on the Ropsten test network.
 	TestnetChainConfig = &ChainConfig{
-		ChainId:             big.NewInt(3),
+		ChainId:             big.NewInt(2),
 		HomesteadBlock:      big.NewInt(0),
 		DAOForkBlock:        nil,
 		DAOForkSupport:      true,
