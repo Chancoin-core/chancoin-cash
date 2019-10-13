@@ -88,7 +88,7 @@ type Bootnodes struct {
 	Testnet []string
 }
 
-type tomoConfig struct {
+type chancoinConfig struct {
 	Eth         eth.Config
 	Shh         whisper.Config
 	Node        node.Config
@@ -101,7 +101,7 @@ type tomoConfig struct {
 	NAT         string
 }
 
-func loadConfig(file string, cfg *tomoConfig) error {
+func loadConfig(file string, cfg *chancoinConfig) error {
 	f, err := os.Open(file)
 	if err != nil {
 		return err
@@ -121,13 +121,13 @@ func defaultNodeConfig() node.Config {
 	cfg.Version = params.VersionWithCommit(gitCommit)
 	cfg.HTTPModules = append(cfg.HTTPModules, "eth", "shh")
 	cfg.WSModules = append(cfg.WSModules, "eth", "shh")
-	cfg.IPCPath = "tomo.ipc"
+	cfg.IPCPath = "chancoin.ipc"
 	return cfg
 }
 
-func makeConfigNode(ctx *cli.Context) (*node.Node, tomoConfig) {
+func makeConfigNode(ctx *cli.Context) (*node.Node, chancoinConfig) {
 	// Load defaults.
-	cfg := tomoConfig{
+	cfg := chancoinConfig{
 		Eth:         eth.DefaultConfig,
 		Shh:         whisper.DefaultConfig,
 		Node:        defaultNodeConfig(),
@@ -154,7 +154,7 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, tomoConfig) {
 	}
 
 	// Check testnet is enable.
-	if ctx.GlobalBool(utils.TomoTestnetFlag.Name) {
+	if ctx.GlobalBool(utils.chancoinTestnetFlag.Name) {
 		common.IsTestnet = true
 		common.TRC21IssuerSMC = common.TRC21IssuerSMCTestNet
 		cfg.Eth.NetworkId = 89
@@ -227,7 +227,7 @@ func enableWhisper(ctx *cli.Context) bool {
 	return false
 }
 
-func makeFullNode(ctx *cli.Context) (*node.Node, tomoConfig) {
+func makeFullNode(ctx *cli.Context) (*node.Node, chancoinConfig) {
 	stack, cfg := makeConfigNode(ctx)
 
 	utils.RegisterEthService(stack, &cfg.Eth)

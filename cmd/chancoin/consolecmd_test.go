@@ -40,25 +40,25 @@ const (
 func TestConsoleWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 
-	// Start a tomo console, make sure it's cleaned up and terminate the console
-	tomo := runTomo(t,
+	// Start a chancoin console, make sure it's cleaned up and terminate the console
+	chancoin := runchancoin(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase,
 		"console")
 
 	// Gather all the infos the welcome message needs to contain
-	tomo.SetTemplateFunc("goos", func() string { return runtime.GOOS })
-	tomo.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
-	tomo.SetTemplateFunc("gover", runtime.Version)
-	tomo.SetTemplateFunc("tomover", func() string { return params.Version })
-	tomo.SetTemplateFunc("niltime", func() string { return time.Unix(1544771829, 0).Format(time.RFC1123) })
-	tomo.SetTemplateFunc("apis", func() string { return ipcAPIs })
+	chancoin.SetTemplateFunc("goos", func() string { return runtime.GOOS })
+	chancoin.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
+	chancoin.SetTemplateFunc("gover", runtime.Version)
+	chancoin.SetTemplateFunc("chancoinver", func() string { return params.Version })
+	chancoin.SetTemplateFunc("niltime", func() string { return time.Unix(1544771829, 0).Format(time.RFC1123) })
+	chancoin.SetTemplateFunc("apis", func() string { return ipcAPIs })
 
 	// Verify the actual welcome message to the required template
-	tomo.Expect(`
-Welcome to the Tomo JavaScript console!
+	chancoin.Expect(`
+Welcome to the chancoin JavaScript console!
 
-instance: tomo/v{{tomover}}/{{goos}}-{{goarch}}/{{gover}}
+instance: chancoin/v{{chancoinver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{.Etherbase}}
 at block: 0 ({{niltime}})
  datadir: {{.Datadir}}
@@ -66,7 +66,7 @@ at block: 0 ({{niltime}})
 
 > {{.InputLine "exit"}}
 `)
-	tomo.ExpectExit()
+	chancoin.ExpectExit()
 }
 
 // Tests that a console can be attached to a running node via various means.
@@ -75,55 +75,55 @@ func TestIPCAttachWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 	var ipc string
 	if runtime.GOOS == "windows" {
-		ipc = `\\.\pipe\tomo` + strconv.Itoa(trulyRandInt(100000, 999999))
+		ipc = `\\.\pipe\chancoin` + strconv.Itoa(trulyRandInt(100000, 999999))
 	} else {
 		ws := tmpdir(t)
 		defer os.RemoveAll(ws)
-		ipc = filepath.Join(ws, "tomo.ipc")
+		ipc = filepath.Join(ws, "chancoin.ipc")
 	}
-	tomo := runTomo(t,
+	chancoin := runchancoin(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase, "--ipcpath", ipc)
 
 	time.Sleep(2 * time.Second) // Simple way to wait for the RPC endpoint to open
-	testAttachWelcome(t, tomo, "ipc:"+ipc, ipcAPIs)
+	testAttachWelcome(t, chancoin, "ipc:"+ipc, ipcAPIs)
 
-	tomo.Interrupt()
-	tomo.ExpectExit()
+	chancoin.Interrupt()
+	chancoin.ExpectExit()
 }
 
 func TestHTTPAttachWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 	port := strconv.Itoa(trulyRandInt(1024, 65536)) // Yeah, sometimes this will fail, sorry :P
-	tomo := runTomo(t,
+	chancoin := runchancoin(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase, "--rpc", "--rpcport", port)
 
 	time.Sleep(2 * time.Second) // Simple way to wait for the RPC endpoint to open
-	testAttachWelcome(t, tomo, "http://localhost:"+port, httpAPIs)
+	testAttachWelcome(t, chancoin, "http://localhost:"+port, httpAPIs)
 
-	tomo.Interrupt()
-	tomo.ExpectExit()
+	chancoin.Interrupt()
+	chancoin.ExpectExit()
 }
 
 func TestWSAttachWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 	port := strconv.Itoa(trulyRandInt(1024, 65536)) // Yeah, sometimes this will fail, sorry :P
 
-	tomo := runTomo(t,
+	chancoin := runchancoin(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase, "--ws", "--wsport", port)
 
 	time.Sleep(2 * time.Second) // Simple way to wait for the RPC endpoint to open
-	testAttachWelcome(t, tomo, "ws://localhost:"+port, httpAPIs)
+	testAttachWelcome(t, chancoin, "ws://localhost:"+port, httpAPIs)
 
-	tomo.Interrupt()
-	tomo.ExpectExit()
+	chancoin.Interrupt()
+	chancoin.ExpectExit()
 }
 
-func testAttachWelcome(t *testing.T, tomo *testtomo, endpoint, apis string) {
-	// Attach to a running tomo note and terminate immediately
-	attach := runTomo(t, "attach", endpoint)
+func testAttachWelcome(t *testing.T, chancoin *testchancoin, endpoint, apis string) {
+	// Attach to a running chancoin note and terminate immediately
+	attach := runchancoin(t, "attach", endpoint)
 	defer attach.ExpectExit()
 	attach.CloseStdin()
 
@@ -131,18 +131,18 @@ func testAttachWelcome(t *testing.T, tomo *testtomo, endpoint, apis string) {
 	attach.SetTemplateFunc("goos", func() string { return runtime.GOOS })
 	attach.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
 	attach.SetTemplateFunc("gover", runtime.Version)
-	attach.SetTemplateFunc("tomover", func() string { return params.Version })
-	attach.SetTemplateFunc("etherbase", func() string { return tomo.Etherbase })
+	attach.SetTemplateFunc("chancoinver", func() string { return params.Version })
+	attach.SetTemplateFunc("etherbase", func() string { return chancoin.Etherbase })
 	attach.SetTemplateFunc("niltime", func() string { return time.Unix(1544771829, 0).Format(time.RFC1123) })
 	attach.SetTemplateFunc("ipc", func() bool { return strings.HasPrefix(endpoint, "ipc") })
-	attach.SetTemplateFunc("datadir", func() string { return tomo.Datadir })
+	attach.SetTemplateFunc("datadir", func() string { return chancoin.Datadir })
 	attach.SetTemplateFunc("apis", func() string { return apis })
 
 	// Verify the actual welcome message to the required template
 	attach.Expect(`
-Welcome to the Tomo JavaScript console!
+Welcome to the chancoin JavaScript console!
 
-instance: tomo/v{{tomover}}/{{goos}}-{{goarch}}/{{gover}}
+instance: chancoin/v{{chancoinver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{etherbase}}
 at block: 0 ({{niltime}}){{if ipc}}
  datadir: {{datadir}}{{end}}

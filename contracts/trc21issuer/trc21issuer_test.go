@@ -23,7 +23,7 @@ var (
 	token = common.HexToAddress("0000000000000000000000000000000000000089")
 
 	delay    = big.NewInt(30 * 48)
-	minApply = big.NewInt(0).Mul(big.NewInt(1000), big.NewInt(100000000000000000)) // 100 TOMO
+	minApply = big.NewInt(0).Mul(big.NewInt(1000), big.NewInt(100000000000000000)) // 100 chancoin
 )
 
 func TestFeeTxWithTRC21Token(t *testing.T) {
@@ -45,7 +45,7 @@ func TestFeeTxWithTRC21Token(t *testing.T) {
 	cap := big.NewInt(0).Mul(big.NewInt(10000000), big.NewInt(10000000000000))
 	fee := big.NewInt(100)
 	//  deploy a TRC21 SMC
-	trc21TokenAddr, trc21, err := DeployTRC21(transactOpts, contractBackend, "TEST", "TOMO", 18, cap, fee)
+	trc21TokenAddr, trc21, err := DeployTRC21(transactOpts, contractBackend, "TEST", "chancoin", 18, cap, fee)
 	if err != nil {
 		t.Fatal("can't deploy smart contract: ", err)
 	}
@@ -71,7 +71,7 @@ func TestFeeTxWithTRC21Token(t *testing.T) {
 	}
 	trc21Issuer.TransactOpts.Value = big.NewInt(0)
 	airDropAmount := big.NewInt(1000000000)
-	// airdrop token trc21 to a address no tomo
+	// airdrop token trc21 to a address no chancoin
 	tx, err := trc21.Transfer(airdropAddr, airDropAmount)
 	if err != nil {
 		t.Fatal("can't execute transfer in tr20: ", err)
@@ -100,7 +100,7 @@ func TestFeeTxWithTRC21Token(t *testing.T) {
 		t.Fatal("can't get balance token fee in  smart contract: ", err, "got", balanceIssuerFee, "wanted", remainFee)
 	}
 
-	// access to address which received token trc21 but dont have tomo
+	// access to address which received token trc21 but dont have chancoin
 	key1TransactOpts := bind.NewKeyedTransactor(airdropKey)
 	key1Trc20, _ := NewTRC21(key1TransactOpts, trc21TokenAddr, contractBackend)
 

@@ -17,7 +17,7 @@ var (
 	trc21TokenAddr = common.HexToAddress("0x80430A33EaB86890a346bCf64F86CFeAC73287f3")
 )
 
-func airDropTokenToAccountNoTomo() {
+func airDropTokenToAccountNochancoin() {
 	client, err := ethclient.Dial(simulation.RpcEndpoint)
 	if err != nil {
 		fmt.Println(err, client)
@@ -54,13 +54,13 @@ func airDropTokenToAccountNoTomo() {
 		log.Fatal("can't execute transferAmount in tr21:", err)
 	}
 }
-func testTransferTRC21TokenWithAccountNoTomo() {
+func testTransferTRC21TokenWithAccountNochancoin() {
 	client, err := ethclient.Dial(simulation.RpcEndpoint)
 	if err != nil {
 		fmt.Println(err, client)
 	}
 
-	// access to address which received token trc20 but dont have tomo
+	// access to address which received token trc20 but dont have chancoin
 	nonce, _ := client.NonceAt(context.Background(), simulation.AirdropAddr, nil)
 	airDropAccount := bind.NewKeyedTransactor(simulation.AirdropKey)
 	airDropAccount.Nonce = big.NewInt(int64(nonce))
@@ -183,12 +183,12 @@ func main() {
 
 	start := time.Now()
 	for i := 0; i < 10000000; i++ {
-		airDropTokenToAccountNoTomo()
+		airDropTokenToAccountNochancoin()
 		fmt.Println("Finish airdrop token to a account")
-		testTransferTRC21TokenWithAccountNoTomo()
-		fmt.Println("Finish transfer trc21 token with a account no tomo")
+		testTransferTRC21TokenWithAccountNochancoin()
+		fmt.Println("Finish transfer trc21 token with a account no chancoin")
 		testTransferTrc21Fail()
-		fmt.Println("Finish testing ! Success transferAmount token trc20 with a account no tomo")
+		fmt.Println("Finish testing ! Success transferAmount token trc20 with a account no chancoin")
 	}
 	fmt.Println(common.PrettyDuration(time.Since(start)))
 }

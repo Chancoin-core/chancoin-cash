@@ -443,7 +443,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 				return nil, err
 			}
 			addr := common.HexToAddress(common.MasternodeVotingSMC)
-			validator, err := contractValidator.NewTomoValidator(addr, client)
+			validator, err := contractValidator.NewchancoinValidator(addr, client)
 			if err != nil {
 				return nil, err
 			}
@@ -582,7 +582,7 @@ func makeExtraData(extra []byte) []byte {
 		// create default extradata
 		extra, _ = rlp.EncodeToBytes([]interface{}{
 			uint(params.VersionMajor<<16 | params.VersionMinor<<8 | params.VersionPatch),
-			"tomo",
+			"chancoin",
 			runtime.Version(),
 			runtime.GOOS,
 		})

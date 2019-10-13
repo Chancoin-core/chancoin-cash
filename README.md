@@ -1,64 +1,64 @@
-# Tomochain
+# chancoin
 
-[![Build Status](https://travis-ci.org/tomochain/tomochain.svg?branch=master)](https://travis-ci.org/tomochain/tomochain)
-[![Join the chat at https://gitter.im/tomochain/tomochain](https://badges.gitter.im/tomochain/tomochain.svg)](https://gitter.im/tomochain/tomochain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/chancoin/chancoin.svg?branch=master)](https://travis-ci.org/chancoin/chancoin)
+[![Join the chat at https://gitter.im/chancoin/chancoin](https://badges.gitter.im/chancoin/chancoin.svg)](https://gitter.im/chancoin/chancoin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## About Tomochain
+## About chancoin
 
-TomoChain is an innovative solution to the scalability problem with the Ethereum blockchain.
+chancoin is an innovative solution to the scalability problem with the Ethereum blockchain.
 Our mission is to be a leading force in building the Internet of Value, and its infrastructure.
 We are working to create an alternative, scalable financial system which is more secure, transparent, efficient, inclusive, and equitable for everyone.
 
-TomoChain relies on a system of 150 Masternodes with a Proof of Stake Voting consensus that can support near-zero fee, and 2-second transaction confirmation times.
+chancoin relies on a system of 150 Masternodes with a Proof of Stake Voting consensus that can support near-zero fee, and 2-second transaction confirmation times.
 Security, stability, and chain finality are guaranteed via novel techniques such as double validation, staking via smart-contracts, and "true" randomization processes.
 
-Tomochain supports all EVM-compatible smart-contracts, protocols, and atomic cross-chain token transfers.
-New scaling techniques such as sharding, private-chain generation, and hardware integration will be continuously researched and incorporated into Tomochain's masternode architecture. This architecture will be an ideal scalable smart-contract public blockchain for decentralized apps, token issuances, and token integrations for small and big businesses.
+chancoin supports all EVM-compatible smart-contracts, protocols, and atomic cross-chain token transfers.
+New scaling techniques such as sharding, private-chain generation, and hardware integration will be continuously researched and incorporated into chancoin's masternode architecture. This architecture will be an ideal scalable smart-contract public blockchain for decentralized apps, token issuances, and token integrations for small and big businesses.
 
-More details can be found at our [technical white paper](https://tomochain.com/docs/technical-whitepaper---1.0.pdf)
+More details can be found at our [technical white paper](https://chancoin.com/docs/technical-whitepaper---1.0.pdf)
 
 Read more about us on:
 
-- our website: http://tomochain.com
-- our blogs and announcements: https://medium.com/tomochain
-- our documentation portal: https://docs.tomochain.com
+- our website: http://chancoin.com
+- our blogs and announcements: https://medium.com/chancoin
+- our documentation portal: https://docs.chancoin.com
 
 ## Building the source
 
-Tomochain provides a client binary called `tomo` for both running a masternode and running a full-node.
-Building `tomo` requires both a Go (1.7+) and C compiler; install both of these.
+chancoin provides a client binary called `chancoin` for both running a masternode and running a full-node.
+Building `chancoin` requires both a Go (1.7+) and C compiler; install both of these.
 
 Once the dependencies are installed, just run the below commands:
 
 ```bash
-$ git clone https://github.com/tomochain/tomochain tomochain
-$ cd tomochain
-$ make tomo
+$ git clone https://github.com/chancoin/chancoin chancoin
+$ cd chancoin
+$ make chancoin
 ```
 
-Alternatively, you could quickly download our pre-complied binary from our [github release page](https://github.com/tomochain/tomochain/releases)
+Alternatively, you could quickly download our pre-complied binary from our [github release page](https://github.com/chancoin/chancoin/releases)
 
-## Running tomo
+## Running chancoin
 
-### Running a tomo masternode
+### Running a chancoin masternode
 
-Please refer to the [official documentation](https://docs.tomochain.com/get-started/run-node/) on how to run a node if your goal is to run a masternode.
+Please refer to the [official documentation](https://docs.chancoin.com/get-started/run-node/) on how to run a node if your goal is to run a masternode.
 The recommanded ways of running a node and applying to become a masternode are explained in detail there.
 
-### Attaching to the Tomochain test network
+### Attaching to the chancoin test network
 
-We published our test network 2.0 with full implementation of PoSV consensus at https://stats.testnet.tomochain.com.
+We published our test network 2.0 with full implementation of PoSV consensus at https://stats.testnet.chancoin.com.
 If you'd like to experiment with smart contract creation and DApps, you might be interested to give these a try on our Testnet.
 
 In order to connect to one of the masternodes on the Testnet, just run the command below:
 
 ```bash
-$ tomo attach https://testnet.tomochain.com
+$ chancoin attach https://testnet.chancoin.com
 ```
 
 This will open the JavaScript console and let you query the blockchain directly via RPC.
 
-### Running tomo locally
+### Running chancoin locally
 
 #### Download genesis block
 $GENESIS_PATH : location of genesis file you would like to put
@@ -67,26 +67,26 @@ $GENESIS_PATH : location of genesis file you would like to put
 ```
    - Testnet
    ```bash
-        curl -L https://raw.githubusercontent.com/tomochain/tomochain/master/genesis/testnet.json -o $GENESIS_PATH
+        curl -L https://raw.githubusercontent.com/chancoin/chancoin/master/genesis/testnet.json -o $GENESIS_PATH
    ```
 
    - Mainnet
    ```bash
-        curl -L https://raw.githubusercontent.com/tomochain/tomochain/master/genesis/mainnet.json -o $GENESIS_PATH
+        curl -L https://raw.githubusercontent.com/chancoin/chancoin/master/genesis/mainnet.json -o $GENESIS_PATH
    ```
 
 #### Create datadir
-   - create a folder to store tomochain data on your machine
+   - create a folder to store chancoin data on your machine
 
    ```bash
         export DATA_DIR=/path/to/your/data/folder
         
-        mkdir -p $DATA_DIR/tomo
+        mkdir -p $DATA_DIR/chancoin
    ```
 #### Initialize the chain from genesis
 
 ```bash
-    tomo init $GENESIS_PATH --datadir $DATA_DIR
+    chancoin init $GENESIS_PATH --datadir $DATA_DIR
 ```
 
 #### Initialize / Import accounts for the nodes's keystore
@@ -99,7 +99,7 @@ If you already had an existing account, import it. Otherwise, please initialize 
 ##### Initialize new accounts
    ```bash
         
-        tomo account new \
+        chancoin account new \
         
           --password [YOUR_PASSWORD_FILE_TO_LOCK_YOUR_ACCOUNT] \
         
@@ -108,7 +108,7 @@ If you already had an existing account, import it. Otherwise, please initialize 
     
 ##### Import accounts
    ```bash
-        tomo  account import [PRIVATE_KEY_FILE_OF_YOUR_ACCOUNT] \
+        chancoin  account import [PRIVATE_KEY_FILE_OF_YOUR_ACCOUNT] \
     
         --keystore $KEYSTORE_DIR \
     
@@ -118,7 +118,7 @@ If you already had an existing account, import it. Otherwise, please initialize 
 ##### List all available accounts in keystore folder
 
 ```bash
-    tomo account list --datadir ./  --keystore $KEYSTORE_DIR
+    chancoin account list --datadir ./  --keystore $KEYSTORE_DIR
 ```
 
 #### Start a node
@@ -127,14 +127,14 @@ If you already had an existing account, import it. Otherwise, please initialize 
    - $PASSWORD: the password file to unlock your account
    - $YOUR_COINBASE_ADDRESS: address of your account which generated in the previous step
    - $NETWORK_ID: the networkId. Mainnet: 88. Testnet: 89
-   - $BOOTNODES: The comma separated list of bootnodes. Find them [here](https://docs.tomochain.com/general/networks/)
-   - $WS_SECRET: The password to send data to the stats website. Find them [here](https://docs.tomochain.com/general/networks/)
-   - $NETSTATS_HOST: The stats website to report to, regarding to your environment. Find them [here](https://docs.tomochain.com/general/networks/)
+   - $BOOTNODES: The comma separated list of bootnodes. Find them [here](https://docs.chancoin.com/general/networks/)
+   - $WS_SECRET: The password to send data to the stats website. Find them [here](https://docs.chancoin.com/general/networks/)
+   - $NETSTATS_HOST: The stats website to report to, regarding to your environment. Find them [here](https://docs.chancoin.com/general/networks/)
    - $NETSTATS_PORT: The port used by the stats website (usually 443)
     
 ##### Let's start a node
 ```bash
-    tomo  --syncmode "full" \
+    chancoin  --syncmode "full" \
         
         --datadir $DATA_DIR --networkid $NETWORK_ID --port 30303 \
         
@@ -175,7 +175,7 @@ If you already had an existing account, import it. Otherwise, please initialize 
            
            --networkid: our network ID.
            
-           --tomo-testnet: required when the networkid is testnet(89).
+           --chancoin-testnet: required when the networkid is testnet(89).
            
            --port: your full-node's listening port (default to 30303)
            
@@ -193,19 +193,19 @@ If you already had an existing account, import it. Otherwise, please initialize 
            
            --gcmode: blockchain garbage collection mode ("full", "archive")
            
-           --synmode: blockchain sync mode ("fast", "full", or "light". More detail: https://github.com/tomochain/tomochain/blob/master/eth/downloader/modes.go#L24)
+           --synmode: blockchain sync mode ("fast", "full", or "light". More detail: https://github.com/chancoin/chancoin/blob/master/eth/downloader/modes.go#L24)
            
            --ethstats: send data to stats website
 ```
    To see all flags usage
    
 ```bash
-      tomo --help
+      chancoin --help
 ```
 
 #### See your node on stats page
-   - Testnet: https://stats.testnet.tomochain.com
-   - Mainnet: http://stats.tomochain.com
+   - Testnet: https://stats.testnet.chancoin.com
+   - Mainnet: http://stats.chancoin.com
 
 
 ## Road map
@@ -223,14 +223,14 @@ Thank you for considering to try out our network and/or help out with the source
 We would love to get your help; feel free to lend a hand.
 Even the smallest bit of code, bug reporting, or just discussing ideas are highly appreciated.
 
-If you would like to contribute to the tomochain source code, please refer to our Developer Guide for details on configuring development environment, managing dependencies, compiling, testing and submitting your code changes to our repo.
+If you would like to contribute to the chancoin source code, please refer to our Developer Guide for details on configuring development environment, managing dependencies, compiling, testing and submitting your code changes to our repo.
 
 Please also make sure your contributions adhere to the base coding guidelines:
 
 - Code must adhere to official Go [formatting](https://golang.org/doc/effective_go.html#formatting) guidelines (i.e uses [gofmt](https://golang.org/cmd/gofmt/)).
 - Code comments must adhere to the official Go [commentary](https://golang.org/doc/effective_go.html#commentary) guidelines.
 - Pull requests need to be based on and opened against the `master` branch.
-- Any code you are trying to contribute must be well-explained as an issue on our [github issue page](https://github.com/tomochain/tomochain/issues)
+- Any code you are trying to contribute must be well-explained as an issue on our [github issue page](https://github.com/chancoin/chancoin/issues)
 - Commit messages should be short but clear enough and should refer to the corresponding pre-logged issue mentioned above.
 
-For technical discussion, feel free to join our chat at [Gitter](https://gitter.im/tomochain/tomochain).
+For technical discussion, feel free to join our chat at [Gitter](https://gitter.im/chancoin/chancoin).

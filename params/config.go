@@ -24,14 +24,14 @@ import (
 )
 
 var (
-	TomoMainnetGenesisHash = common.HexToHash("0x9528f36a70f7fa54bf4bfec93a919eaf91c9b9fe358a8a3a5bd8d03d47b6c100") // Tomo Mainnet genesis hash to enforce below configs on
+	chancoinMainnetGenesisHash = common.HexToHash("0x9528f36a70f7fa54bf4bfec93a919eaf91c9b9fe358a8a3a5bd8d03d47b6c100") // chancoin Mainnet genesis hash to enforce below configs on
 	MainnetGenesisHash     = common.HexToHash("") // Mainnet genesis hash to enforce below configs on
 	TestnetGenesisHash     = common.HexToHash("") // Testnet genesis hash to enforce below configs on
 )
 
 var (
-	// TomoChain mainnet config
-	TomoMainnetChainConfig = &ChainConfig{
+	// chancoin mainnet config
+	chancoinMainnetChainConfig = &ChainConfig{
 		ChainId:        big.NewInt(88),
 		HomesteadBlock: big.NewInt(1),
 		EIP150Block:    big.NewInt(2),

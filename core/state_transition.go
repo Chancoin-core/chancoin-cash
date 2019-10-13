@@ -242,7 +242,7 @@ func (st *StateTransition) TransitionDb() (ret []byte, usedGas uint64, failed bo
 		vmerr error
 	)
 	// for debugging purpose
-	// TODO: clean it after fixing the issue https://github.com/tomochain/tomochain/issues/401
+	// TODO: clean it after fixing the issue https://github.com/chancoin/chancoin/issues/401
 	var contractAction string
 	nonce := uint64(1)
 	if contractCreation {
