@@ -31,7 +31,7 @@ var (
 
 var (
 	// chancoin mainnet config
-	chancoinMainnetChainConfig = &ChainConfig{
+	MainnetChainConfig = &ChainConfig{
 		ChainId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(1),
 		EIP150Block:    big.NewInt(2),

@@ -154,7 +154,7 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, chancoinConfig) {
 	}
 
 	// Check testnet is enable.
-	if ctx.GlobalBool(utils.chancoinTestnetFlag.Name) {
+	if ctx.GlobalBool(utils.TestnetFlag.Name) {
 		common.IsTestnet = true
 		common.TRC21IssuerSMC = common.TRC21IssuerSMCTestNet
 		cfg.Eth.NetworkId = 89
