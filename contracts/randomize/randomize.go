@@ -22,7 +22,7 @@ import (
 )
 
 type Randomize struct {
-	*contract.chancoinRandomizeSession
+	*contract.RandomizeSession
 	contractBackend bind.ContractBackend
 }
 
@@ -33,7 +33,7 @@ func NewRandomize(transactOpts *bind.TransactOpts, contractAddr common.Address, 
 	}
 
 	return &Randomize{
-		&contract.chancoinRandomizeSession{
+		&contract.RandomizeSession{
 			Contract:     randomize,
 			TransactOpts: *transactOpts,
 		},

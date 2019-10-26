@@ -217,9 +217,9 @@ type chancoinValidatorFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// chancoinValidatorSession is an auto generated Go binding around an Ethereum contract,
+// ValidatorSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type chancoinValidatorSession struct {
+type ValidatorSession struct {
 	Contract     *chancoinValidator    // Generic contract binding to set the session for
 	CallOpts     bind.CallOpts     // Call options to use throughout this session
 	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
@@ -352,7 +352,7 @@ func (_chancoinValidator *chancoinValidatorCaller) CandidateCount(opts *bind.Cal
 // CandidateCount is a free data retrieval call binding the contract method 0xa9a981a3.
 //
 // Solidity: function candidateCount() constant returns(uint256)
-func (_chancoinValidator *chancoinValidatorSession) CandidateCount() (*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) CandidateCount() (*big.Int, error) {
 	return _chancoinValidator.Contract.CandidateCount(&_chancoinValidator.CallOpts)
 }
 
@@ -378,7 +378,7 @@ func (_chancoinValidator *chancoinValidatorCaller) CandidateWithdrawDelay(opts *
 // CandidateWithdrawDelay is a free data retrieval call binding the contract method 0xd161c767.
 //
 // Solidity: function candidateWithdrawDelay() constant returns(uint256)
-func (_chancoinValidator *chancoinValidatorSession) CandidateWithdrawDelay() (*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) CandidateWithdrawDelay() (*big.Int, error) {
 	return _chancoinValidator.Contract.CandidateWithdrawDelay(&_chancoinValidator.CallOpts)
 }
 
@@ -404,7 +404,7 @@ func (_chancoinValidator *chancoinValidatorCaller) Candidates(opts *bind.CallOpt
 // Candidates is a free data retrieval call binding the contract method 0x3477ee2e.
 //
 // Solidity: function candidates( uint256) constant returns(address)
-func (_chancoinValidator *chancoinValidatorSession) Candidates(arg0 *big.Int) (common.Address, error) {
+func (_chancoinValidator *ValidatorSession) Candidates(arg0 *big.Int) (common.Address, error) {
 	return _chancoinValidator.Contract.Candidates(&_chancoinValidator.CallOpts, arg0)
 }
 
@@ -430,7 +430,7 @@ func (_chancoinValidator *chancoinValidatorCaller) GetCandidateCap(opts *bind.Ca
 // GetCandidateCap is a free data retrieval call binding the contract method 0x58e7525f.
 //
 // Solidity: function getCandidateCap(_candidate address) constant returns(uint256)
-func (_chancoinValidator *chancoinValidatorSession) GetCandidateCap(_candidate common.Address) (*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) GetCandidateCap(_candidate common.Address) (*big.Int, error) {
 	return _chancoinValidator.Contract.GetCandidateCap(&_chancoinValidator.CallOpts, _candidate)
 }
 
@@ -456,7 +456,7 @@ func (_chancoinValidator *chancoinValidatorCaller) GetCandidateOwner(opts *bind.
 // GetCandidateOwner is a free data retrieval call binding the contract method 0xb642facd.
 //
 // Solidity: function getCandidateOwner(_candidate address) constant returns(address)
-func (_chancoinValidator *chancoinValidatorSession) GetCandidateOwner(_candidate common.Address) (common.Address, error) {
+func (_chancoinValidator *ValidatorSession) GetCandidateOwner(_candidate common.Address) (common.Address, error) {
 	return _chancoinValidator.Contract.GetCandidateOwner(&_chancoinValidator.CallOpts, _candidate)
 }
 
@@ -482,7 +482,7 @@ func (_chancoinValidator *chancoinValidatorCaller) GetCandidates(opts *bind.Call
 // GetCandidates is a free data retrieval call binding the contract method 0x06a49fce.
 //
 // Solidity: function getCandidates() constant returns(address[])
-func (_chancoinValidator *chancoinValidatorSession) GetCandidates() ([]common.Address, error) {
+func (_chancoinValidator *ValidatorSession) GetCandidates() ([]common.Address, error) {
 	return _chancoinValidator.Contract.GetCandidates(&_chancoinValidator.CallOpts)
 }
 
@@ -508,7 +508,7 @@ func (_chancoinValidator *chancoinValidatorCaller) GetVoterCap(opts *bind.CallOp
 // GetVoterCap is a free data retrieval call binding the contract method 0x302b6872.
 //
 // Solidity: function getVoterCap(_candidate address, _voter address) constant returns(uint256)
-func (_chancoinValidator *chancoinValidatorSession) GetVoterCap(_candidate common.Address, _voter common.Address) (*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) GetVoterCap(_candidate common.Address, _voter common.Address) (*big.Int, error) {
 	return _chancoinValidator.Contract.GetVoterCap(&_chancoinValidator.CallOpts, _candidate, _voter)
 }
 
@@ -534,7 +534,7 @@ func (_chancoinValidator *chancoinValidatorCaller) GetVoters(opts *bind.CallOpts
 // GetVoters is a free data retrieval call binding the contract method 0x2d15cc04.
 //
 // Solidity: function getVoters(_candidate address) constant returns(address[])
-func (_chancoinValidator *chancoinValidatorSession) GetVoters(_candidate common.Address) ([]common.Address, error) {
+func (_chancoinValidator *ValidatorSession) GetVoters(_candidate common.Address) ([]common.Address, error) {
 	return _chancoinValidator.Contract.GetVoters(&_chancoinValidator.CallOpts, _candidate)
 }
 
@@ -560,7 +560,7 @@ func (_chancoinValidator *chancoinValidatorCaller) GetWithdrawBlockNumbers(opts 
 // GetWithdrawBlockNumbers is a free data retrieval call binding the contract method 0x2f9c4bba.
 //
 // Solidity: function getWithdrawBlockNumbers() constant returns(uint256[])
-func (_chancoinValidator *chancoinValidatorSession) GetWithdrawBlockNumbers() ([]*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) GetWithdrawBlockNumbers() ([]*big.Int, error) {
 	return _chancoinValidator.Contract.GetWithdrawBlockNumbers(&_chancoinValidator.CallOpts)
 }
 
@@ -586,7 +586,7 @@ func (_chancoinValidator *chancoinValidatorCaller) GetWithdrawCap(opts *bind.Cal
 // GetWithdrawCap is a free data retrieval call binding the contract method 0x15febd68.
 //
 // Solidity: function getWithdrawCap(_blockNumber uint256) constant returns(uint256)
-func (_chancoinValidator *chancoinValidatorSession) GetWithdrawCap(_blockNumber *big.Int) (*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) GetWithdrawCap(_blockNumber *big.Int) (*big.Int, error) {
 	return _chancoinValidator.Contract.GetWithdrawCap(&_chancoinValidator.CallOpts, _blockNumber)
 }
 
@@ -612,7 +612,7 @@ func (_chancoinValidator *chancoinValidatorCaller) IsCandidate(opts *bind.CallOp
 // IsCandidate is a free data retrieval call binding the contract method 0xd51b9e93.
 //
 // Solidity: function isCandidate(_candidate address) constant returns(bool)
-func (_chancoinValidator *chancoinValidatorSession) IsCandidate(_candidate common.Address) (bool, error) {
+func (_chancoinValidator *ValidatorSession) IsCandidate(_candidate common.Address) (bool, error) {
 	return _chancoinValidator.Contract.IsCandidate(&_chancoinValidator.CallOpts, _candidate)
 }
 
@@ -638,7 +638,7 @@ func (_chancoinValidator *chancoinValidatorCaller) MaxValidatorNumber(opts *bind
 // MaxValidatorNumber is a free data retrieval call binding the contract method 0xd09f1ab4.
 //
 // Solidity: function maxValidatorNumber() constant returns(uint256)
-func (_chancoinValidator *chancoinValidatorSession) MaxValidatorNumber() (*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) MaxValidatorNumber() (*big.Int, error) {
 	return _chancoinValidator.Contract.MaxValidatorNumber(&_chancoinValidator.CallOpts)
 }
 
@@ -664,7 +664,7 @@ func (_chancoinValidator *chancoinValidatorCaller) MinCandidateCap(opts *bind.Ca
 // MinCandidateCap is a free data retrieval call binding the contract method 0xd55b7dff.
 //
 // Solidity: function minCandidateCap() constant returns(uint256)
-func (_chancoinValidator *chancoinValidatorSession) MinCandidateCap() (*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) MinCandidateCap() (*big.Int, error) {
 	return _chancoinValidator.Contract.MinCandidateCap(&_chancoinValidator.CallOpts)
 }
 
@@ -690,7 +690,7 @@ func (_chancoinValidator *chancoinValidatorCaller) MinVoterCap(opts *bind.CallOp
 // MinVoterCap is a free data retrieval call binding the contract method 0xf8ac9dd5.
 //
 // Solidity: function minVoterCap() constant returns(uint256)
-func (_chancoinValidator *chancoinValidatorSession) MinVoterCap() (*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) MinVoterCap() (*big.Int, error) {
 	return _chancoinValidator.Contract.MinVoterCap(&_chancoinValidator.CallOpts)
 }
 
@@ -716,7 +716,7 @@ func (_chancoinValidator *chancoinValidatorCaller) VoterWithdrawDelay(opts *bind
 // VoterWithdrawDelay is a free data retrieval call binding the contract method 0xa9ff959e.
 //
 // Solidity: function voterWithdrawDelay() constant returns(uint256)
-func (_chancoinValidator *chancoinValidatorSession) VoterWithdrawDelay() (*big.Int, error) {
+func (_chancoinValidator *ValidatorSession) VoterWithdrawDelay() (*big.Int, error) {
 	return _chancoinValidator.Contract.VoterWithdrawDelay(&_chancoinValidator.CallOpts)
 }
 
@@ -737,7 +737,7 @@ func (_chancoinValidator *chancoinValidatorTransactor) Propose(opts *bind.Transa
 // Propose is a paid mutator transaction binding the contract method 0x01267951.
 //
 // Solidity: function propose(_candidate address) returns()
-func (_chancoinValidator *chancoinValidatorSession) Propose(_candidate common.Address) (*types.Transaction, error) {
+func (_chancoinValidator *ValidatorSession) Propose(_candidate common.Address) (*types.Transaction, error) {
 	return _chancoinValidator.Contract.Propose(&_chancoinValidator.TransactOpts, _candidate)
 }
 
@@ -758,7 +758,7 @@ func (_chancoinValidator *chancoinValidatorTransactor) Resign(opts *bind.Transac
 // Resign is a paid mutator transaction binding the contract method 0xae6e43f5.
 //
 // Solidity: function resign(_candidate address) returns()
-func (_chancoinValidator *chancoinValidatorSession) Resign(_candidate common.Address) (*types.Transaction, error) {
+func (_chancoinValidator *ValidatorSession) Resign(_candidate common.Address) (*types.Transaction, error) {
 	return _chancoinValidator.Contract.Resign(&_chancoinValidator.TransactOpts, _candidate)
 }
 
@@ -779,7 +779,7 @@ func (_chancoinValidator *chancoinValidatorTransactor) Unvote(opts *bind.Transac
 // Unvote is a paid mutator transaction binding the contract method 0x02aa9be2.
 //
 // Solidity: function unvote(_candidate address, _cap uint256) returns()
-func (_chancoinValidator *chancoinValidatorSession) Unvote(_candidate common.Address, _cap *big.Int) (*types.Transaction, error) {
+func (_chancoinValidator *ValidatorSession) Unvote(_candidate common.Address, _cap *big.Int) (*types.Transaction, error) {
 	return _chancoinValidator.Contract.Unvote(&_chancoinValidator.TransactOpts, _candidate, _cap)
 }
 
@@ -800,7 +800,7 @@ func (_chancoinValidator *chancoinValidatorTransactor) Vote(opts *bind.TransactO
 // Vote is a paid mutator transaction binding the contract method 0x6dd7d8ea.
 //
 // Solidity: function vote(_candidate address) returns()
-func (_chancoinValidator *chancoinValidatorSession) Vote(_candidate common.Address) (*types.Transaction, error) {
+func (_chancoinValidator *ValidatorSession) Vote(_candidate common.Address) (*types.Transaction, error) {
 	return _chancoinValidator.Contract.Vote(&_chancoinValidator.TransactOpts, _candidate)
 }
 
@@ -821,7 +821,7 @@ func (_chancoinValidator *chancoinValidatorTransactor) Withdraw(opts *bind.Trans
 // Withdraw is a paid mutator transaction binding the contract method 0x441a3e70.
 //
 // Solidity: function withdraw(_blockNumber uint256, _index uint256) returns()
-func (_chancoinValidator *chancoinValidatorSession) Withdraw(_blockNumber *big.Int, _index *big.Int) (*types.Transaction, error) {
+func (_chancoinValidator *ValidatorSession) Withdraw(_blockNumber *big.Int, _index *big.Int) (*types.Transaction, error) {
 	return _chancoinValidator.Contract.Withdraw(&_chancoinValidator.TransactOpts, _blockNumber, _index)
 }
 
