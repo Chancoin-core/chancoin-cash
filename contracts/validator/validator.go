@@ -23,7 +23,7 @@ import (
 )
 
 type Validator struct {
-	*contract.chancoinValidatorSession
+	*contract.ValidatorSession
 	contractBackend bind.ContractBackend
 }
 
@@ -34,7 +34,7 @@ func NewValidator(transactOpts *bind.TransactOpts, contractAddr common.Address, 
 	}
 
 	return &Validator{
-		&contract.chancoinValidatorSession{
+		&contract.ValidatorSession{
 			Contract:     validator,
 			TransactOpts: *transactOpts,
 		},

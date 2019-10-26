@@ -214,9 +214,9 @@ type chancoinRandomizeFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// chancoinRandomizeSession is an auto generated Go binding around an Ethereum contract,
+// RandomizeSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type chancoinRandomizeSession struct {
+type RandomizeSession struct {
 	Contract     *chancoinRandomize    // Generic contract binding to set the session for
 	CallOpts     bind.CallOpts     // Call options to use throughout this session
 	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
@@ -349,7 +349,7 @@ func (_chancoinRandomize *chancoinRandomizeCaller) GetOpening(opts *bind.CallOpt
 // GetOpening is a free data retrieval call binding the contract method 0xd442d6cc.
 //
 // Solidity: function getOpening(_validator address) constant returns(bytes32)
-func (_chancoinRandomize *chancoinRandomizeSession) GetOpening(_validator common.Address) ([32]byte, error) {
+func (_chancoinRandomize *RandomizeSession) GetOpening(_validator common.Address) ([32]byte, error) {
 	return _chancoinRandomize.Contract.GetOpening(&_chancoinRandomize.CallOpts, _validator)
 }
 
@@ -375,7 +375,7 @@ func (_chancoinRandomize *chancoinRandomizeCaller) GetSecret(opts *bind.CallOpts
 // GetSecret is a free data retrieval call binding the contract method 0x284180fc.
 //
 // Solidity: function getSecret(_validator address) constant returns(bytes32[])
-func (_chancoinRandomize *chancoinRandomizeSession) GetSecret(_validator common.Address) ([][32]byte, error) {
+func (_chancoinRandomize *RandomizeSession) GetSecret(_validator common.Address) ([][32]byte, error) {
 	return _chancoinRandomize.Contract.GetSecret(&_chancoinRandomize.CallOpts, _validator)
 }
 
@@ -396,7 +396,7 @@ func (_chancoinRandomize *chancoinRandomizeTransactor) SetOpening(opts *bind.Tra
 // SetOpening is a paid mutator transaction binding the contract method 0xe11f5ba2.
 //
 // Solidity: function setOpening(_opening bytes32) returns()
-func (_chancoinRandomize *chancoinRandomizeSession) SetOpening(_opening [32]byte) (*types.Transaction, error) {
+func (_chancoinRandomize *RandomizeSession) SetOpening(_opening [32]byte) (*types.Transaction, error) {
 	return _chancoinRandomize.Contract.SetOpening(&_chancoinRandomize.TransactOpts, _opening)
 }
 
@@ -417,7 +417,7 @@ func (_chancoinRandomize *chancoinRandomizeTransactor) SetSecret(opts *bind.Tran
 // SetSecret is a paid mutator transaction binding the contract method 0x34d38600.
 //
 // Solidity: function setSecret(_secret bytes32[]) returns()
-func (_chancoinRandomize *chancoinRandomizeSession) SetSecret(_secret [][32]byte) (*types.Transaction, error) {
+func (_chancoinRandomize *RandomizeSession) SetSecret(_secret [][32]byte) (*types.Transaction, error) {
 	return _chancoinRandomize.Contract.SetSecret(&_chancoinRandomize.TransactOpts, _secret)
 }
 
