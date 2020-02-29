@@ -20,13 +20,14 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
-	"gopkg.in/urfave/cli.v1"
 	"io"
 	"math/big"
 	"os"
 	"reflect"
 	"strings"
 	"unicode"
+
+	"gopkg.in/urfave/cli.v1"
 
 	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/common"
@@ -157,7 +158,7 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, chancoinConfig) {
 	if ctx.GlobalBool(utils.TestnetFlag.Name) {
 		common.IsTestnet = true
 		common.TRC21IssuerSMC = common.TRC21IssuerSMCTestNet
-		cfg.Eth.NetworkId = 89
+		cfg.Eth.NetworkId = 133701
 	}
 
 	// Check rollback hash exist.
