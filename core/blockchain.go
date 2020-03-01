@@ -1930,7 +1930,7 @@ func (bc *BlockChain) UpdateM1() error {
 		return err
 	}
 	addr := common.HexToAddress(common.MasternodeVotingSMC)
-	validator, err := contractValidator.NewchancoinValidator(addr, client)
+	validator, err := contractValidator.NewChancoinValidator(addr, client)
 	if err != nil {
 		return err
 	}

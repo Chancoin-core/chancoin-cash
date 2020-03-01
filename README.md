@@ -80,7 +80,7 @@ $GENESIS_PATH : location of genesis file you would like to put
 
    ```bash
         export DATA_DIR=/path/to/your/data/folder
-        
+
         mkdir -p $DATA_DIR/chancoin
    ```
 #### Initialize the chain from genesis
@@ -90,7 +90,7 @@ $GENESIS_PATH : location of genesis file you would like to put
 ```
 
 #### Initialize / Import accounts for the nodes's keystore
-If you already had an existing account, import it. Otherwise, please initialize new accounts 
+If you already had an existing account, import it. Otherwise, please initialize new accounts
 
 ```bash
     export KEYSTORE_DIR=path/to/keystore
@@ -98,20 +98,20 @@ If you already had an existing account, import it. Otherwise, please initialize 
 
 ##### Initialize new accounts
    ```bash
-        
+
         chancoin account new \
-        
+
           --password [YOUR_PASSWORD_FILE_TO_LOCK_YOUR_ACCOUNT] \
-        
+
           --keystore $KEYSTORE_DIR
    ```
-    
+
 ##### Import accounts
    ```bash
         chancoin  account import [PRIVATE_KEY_FILE_OF_YOUR_ACCOUNT] \
-    
+
         --keystore $KEYSTORE_DIR \
-    
+
         --password [YOUR_PASSWORD_FILE_TO_LOCK_YOUR_ACCOUNT]
    ```
 
@@ -126,79 +126,79 @@ If you already had an existing account, import it. Otherwise, please initialize 
    - $IDENTITY: the name of your node
    - $PASSWORD: the password file to unlock your account
    - $YOUR_COINBASE_ADDRESS: address of your account which generated in the previous step
-   - $NETWORK_ID: the networkId. Mainnet: 88. Testnet: 89
+   - $NETWORK_ID: the networkId. Mainnet: 133700. Testnet: 133701
    - $BOOTNODES: The comma separated list of bootnodes. Find them [here](https://docs.chancoin.com/general/networks/)
    - $WS_SECRET: The password to send data to the stats website. Find them [here](https://docs.chancoin.com/general/networks/)
    - $NETSTATS_HOST: The stats website to report to, regarding to your environment. Find them [here](https://docs.chancoin.com/general/networks/)
    - $NETSTATS_PORT: The port used by the stats website (usually 443)
-    
+
 ##### Let's start a node
 ```bash
     chancoin  --syncmode "full" \
-        
+
         --datadir $DATA_DIR --networkid $NETWORK_ID --port 30303 \
-        
+
         --keystore $KEYSTORE_DIR --password $PASSWORD \
-        
+
         --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --rpcvhosts "*" \
-        
+
         --rpcapi "db,eth,net,web3,personal,debug" \
-        
+
         --gcmode "archive" \
-        
+
         --ws --wsaddr 0.0.0.0 --wsport 8546 --wsorigins "*" --unlock "$YOUR_COINBASE_ADDRESS" \
-        
+
         --identity $IDENTITY \
-        
+
         --mine --gasprice 2500 \
-        
+
         --bootnodes $BOOTNODES \
-        
+
         --ethstats $IDENTITY:$WS_SECRET@$NETSTATS_HOST:$NETSTATS_PORT
-        
+
         console
 ```
 
 
 ##### Some explanations on the flags
-   
+
 ```
            --verbosity: log level from 1 to 5. Here we're using 4 for debug messages
-           
+
            --datadir: path to your data directory created above.
-           
+
            --keystore: path to your account's keystore created above.
-           
+
            --identity: your full-node's name.
-           
+
            --password: your account's password.
-           
+
            --networkid: our network ID.
-           
-           --chancoin-testnet: required when the networkid is testnet(89).
-           
+
+           --chancoin-testnet: required when the networkid is testnet(133701).
+
            --port: your full-node's listening port (default to 30303)
-           
+
            --rpc, --rpccorsdomain, --rpcaddr, --rpcport, --rpcvhosts: your full-node will accept RPC requests at 8545 TCP.
-           
+
            --ws, --wsaddr, --wsport, --wsorigins: your full-node will accept Websocket requests at 8546 TCP.
-           
+
            --mine: your full-node wants to register to be a candidate for masternode selection.
-           
+
            --gasprice: Minimal gas price to accept for mining a transaction.
-           
+
            --targetgaslimit: Target gas limit sets the artificial target gas floor for the blocks to mine (default: 4712388)
-           
+
            --bootnode: bootnode information to help to discover other nodes in the network
-           
+
            --gcmode: blockchain garbage collection mode ("full", "archive")
-           
+
            --synmode: blockchain sync mode ("fast", "full", or "light". More detail: https://github.com/chancoin/chancoin/blob/master/eth/downloader/modes.go#L24)
-           
+
            --ethstats: send data to stats website
 ```
    To see all flags usage
-   
+
 ```bash
       chancoin --help
 ```

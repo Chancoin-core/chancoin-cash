@@ -92,10 +92,10 @@ func TestRewardBalance(t *testing.T) {
 	accounts := []*bind.TransactOpts{acc1Opts, acc2Opts}
 	transactOpts := bind.NewKeyedTransactor(acc1Key)
 
-	// validatorAddr, _, baseValidator, err := contract.DeploychancoinValidator(transactOpts, contractBackend, big.NewInt(50000), big.NewInt(99), big.NewInt(100), big.NewInt(100))
+	// validatorAddr, _, baseValidator, err := contract.DeployChancoinValidator(transactOpts, contractBackend, big.NewInt(50000), big.NewInt(99), big.NewInt(100), big.NewInt(100))
 	validatorCap := new(big.Int)
 	validatorCap.SetString("50000000000000000000000", 10)
-	validatorAddr, _, baseValidator, err := contractValidator.DeploychancoinValidator(
+	validatorAddr, _, baseValidator, err := contractValidator.DeployChancoinValidator(
 		transactOpts,
 		contractBackend,
 		[]common.Address{addr},
@@ -177,7 +177,7 @@ func TestRewardBalance(t *testing.T) {
 
 }
 
-func GetRewardBalancesRate(foudationWalletAddr common.Address, masterAddr common.Address, totalReward *big.Int, validator *contractValidator.chancoinValidator) (map[common.Address]*big.Int, error) {
+func GetRewardBalancesRate(foudationWalletAddr common.Address, masterAddr common.Address, totalReward *big.Int, validator *contractValidator.ChancoinValidator) (map[common.Address]*big.Int, error) {
 	owner := GetCandidatesOwnerBySigner(validator, masterAddr)
 	balances := make(map[common.Address]*big.Int)
 	rewardMaster := new(big.Int).Mul(totalReward, new(big.Int).SetInt64(common.RewardMasterPercent))
@@ -238,7 +238,7 @@ func GetRewardBalancesRate(foudationWalletAddr common.Address, masterAddr common
 	return balances, nil
 }
 
-func GetCandidatesOwnerBySigner(validator *contractValidator.chancoinValidator, signerAddr common.Address) common.Address {
+func GetCandidatesOwnerBySigner(validator *contractValidator.ChancoinValidator, signerAddr common.Address) common.Address {
 	owner := signerAddr
 	opts := new(bind.CallOpts)
 	owner, err := validator.GetCandidateOwner(opts, signerAddr)

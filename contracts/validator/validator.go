@@ -28,7 +28,7 @@ type Validator struct {
 }
 
 func NewValidator(transactOpts *bind.TransactOpts, contractAddr common.Address, contractBackend bind.ContractBackend) (*Validator, error) {
-	validator, err := contract.NewchancoinValidator(contractAddr, contractBackend)
+	validator, err := contract.NewChancoinValidator(contractAddr, contractBackend)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func DeployValidator(transactOpts *bind.TransactOpts, contractBackend bind.Contr
 	// 150 masternodes
 	// Candidate Delay Withdraw 30 days = 1296000 blocks
 	// Voter Delay Withdraw 2 days = 86400 blocks
-	validatorAddr, _, _, err := contract.DeploychancoinValidator(transactOpts, contractBackend, validatorAddress, caps, ownerAddress, minDeposit, minVoterCap, big.NewInt(150), big.NewInt(1296000), big.NewInt(86400))
+	validatorAddr, _, _, err := contract.DeployChancoinValidator(transactOpts, contractBackend, validatorAddress, caps, ownerAddress, minDeposit, minVoterCap, big.NewInt(150), big.NewInt(1296000), big.NewInt(86400))
 	if err != nil {
 		return validatorAddr, nil, err
 	}
