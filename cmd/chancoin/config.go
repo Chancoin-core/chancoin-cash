@@ -158,7 +158,7 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, chancoinConfig) {
 	if ctx.GlobalBool(utils.TestnetFlag.Name) {
 		common.IsTestnet = true
 		common.TRC21IssuerSMC = common.TRC21IssuerSMCTestNet
-		cfg.Eth.NetworkId = 133700
+		cfg.Eth.NetworkId = 133701
 	}
 
 	// Check rollback hash exist.
